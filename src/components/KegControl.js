@@ -5,6 +5,7 @@ import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
 import { connect } from 'react-redux';
 import * as a from './../actions';
+import PropTypes from "prop-types";
 
 class KegControl extends React.Component {
 
@@ -67,7 +68,7 @@ class KegControl extends React.Component {
     dispatch(action);
     this.setState({
       editing: false,
-      selectedTicket: null
+      selectedKeg: null
     });
   }
 
@@ -75,7 +76,7 @@ class KegControl extends React.Component {
     const { dispatch } = this.props;
     const action = a.deleteKeg(id);
     dispatch(action);
-    this.setState({selectedTicket: null});
+    this.setState({selectedKeg: null});
   }
 
   render(){
@@ -116,9 +117,13 @@ class KegControl extends React.Component {
   }
 }
 
+KegControl.propTypes = {
+  masterKegList: PropTypes.object
+};
+
 const mapStateToProps = state => {
   return {
-    masterTicketList: state.masterTicketList,
+    masterKegList: state.masterKegList,
     formVisibleOnPage: state.formVisibleOnPage
   }
 }
