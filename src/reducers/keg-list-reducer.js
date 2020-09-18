@@ -20,7 +20,11 @@ export default (state = {}, action) => {
     return newState1;
   case c.SELL_PINT:
     const newState2 = { ...state };
-    newState2[id].pint -= 1;
+    if (newState2[id].pint === 1 || newState2[id].pint === "Sold Out") {
+      newState2[id].pint = "Sold Out"
+    } else {
+      newState2[id].pint -= 1;
+    }
     return newState2;
   default:
     return state;

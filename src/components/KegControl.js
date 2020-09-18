@@ -48,19 +48,24 @@ class KegControl extends React.Component {
   }
 
   handleSellingPint = (id) => {
-    const soldMasterKeg = this.state.masterKegList[this.state.masterKegList.findIndex(keg => keg.id === id)];
-    if (soldMasterKeg.pint === 1 || soldMasterKeg.pint === "Sold Out" ) {
-      soldMasterKeg.pint = "Sold Out";
-    } else {
-      soldMasterKeg.pint -=1;
-    }
-    const soldMasterKegList = this.state.masterKegList
-      .filter(keg => keg.id !== this.state.selectedKeg.id)
-      .concat(soldMasterKeg);
-    this.setState({
-      masterKegList: soldMasterKegList,
-    })
+    const { dispatch } = this.props;
+    const action = a.sellPint(id);
+    dispatch(action);
   }
+
+  //   const soldMasterKeg = this.state.masterKegList[this.state.masterKegList.findIndex(keg => keg.id === id)];
+  //   if (soldMasterKeg.pint === 1 || soldMasterKeg.pint === "Sold Out" ) {
+  //     soldMasterKeg.pint = "Sold Out";
+  //   } else {
+  //     soldMasterKeg.pint -=1;
+  //   }
+  //   const soldMasterKegList = this.state.masterKegList
+  //     .filter(keg => keg.id !== this.state.selectedKeg.id)
+  //     .concat(soldMasterKeg);
+  //   this.setState({
+  //     masterKegList: soldMasterKegList,
+  //   })
+  // }
 
   handleEditingKegInList = (kegToEdit) => {
     const { dispatch } = this.props;
