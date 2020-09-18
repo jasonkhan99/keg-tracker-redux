@@ -14,5 +14,16 @@ describe('keg tracker actions', () => {
       type: 'TOGGLE_FORM'
     });
   });
-  
+
+  test('should create ADD_KEG action', () => {
+    expect(actions.addKeg({brand: 'Ninkasi', name: 'Red Dawn', price: '$6.00', alcoholContent: '6.7', id: 1})).toEqual({
+      type: 'ADD_KEG',
+      brand: 'Ninkasi',
+      name: 'Red Dawn',
+      price: '$6.00',
+      alcoholContent: '6.7',
+      id: 1
+    });
+  });
+
 });
