@@ -72,4 +72,19 @@ describe('kegListReducer', () => {
     });
   });
 
+  test('Should successfully sell 1 pint', () => {
+    action = {
+      type: c.SELL_PINT,
+      id: 2,
+    };
+    expect(kegListReducer(currentState, action)).toEqual({
+      2: { brand: 'Pfriem',
+        name: 'Pilsner',
+        price: '$5.00',
+        alcoholContent: '4.5',
+        pint: '123',
+        id: 2 },
+    });
+  });
+
 });
