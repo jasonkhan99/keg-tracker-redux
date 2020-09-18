@@ -75,14 +75,20 @@ describe('kegListReducer', () => {
   test('Should successfully sell 1 pint', () => {
     action = {
       type: c.SELL_PINT,
-      id: 2,
+      id: 1,
     };
     expect(kegListReducer(currentState, action)).toEqual({
+      1: { brand: 'Ninkasi',
+        name: 'Red Dawn',
+        price: '$6.00',
+        alcoholContent: '6.7',
+        pint: 123,
+        id: 1 },
       2: { brand: 'Pfriem',
         name: 'Pilsner',
         price: '$5.00',
         alcoholContent: '4.5',
-        pint: '123',
+        pint: '124',
         id: 2 },
     });
   });
