@@ -21,3 +21,9 @@ export const addKeg = (keg) => {
     id: id
   }
 }
+
+export const sellPint = id => ({
+  type: c.SELL_PINT,
+  pint: pint -= 1,
+  id
+})
