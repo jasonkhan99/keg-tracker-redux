@@ -3,6 +3,7 @@ import NewKegForm from './NewKegForm';
 import KegList from './KegList';
 import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
+import { connect } from 'react-redux';
 
 class KegControl extends React.Component {
 
@@ -115,7 +116,15 @@ class KegControl extends React.Component {
       </React.Fragment>
     );
   }
-
 }
+
+const mapStateToProps = state => {
+  return {
+    masterTicketList: state.masterTicketList,
+    formVisibleOnPage: state.formVisibleOnPage
+  }
+}
+
+KegControl = connect(mapStateToProps)(KegControl);
 
 export default KegControl;
