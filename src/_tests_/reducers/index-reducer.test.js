@@ -36,4 +36,12 @@ describe("rootReducer", () => {
     expect(store.getState().masterKegList).toEqual(kegListReducer(undefined, action));
   });
 
+  test('Check that initial state of formVisibleReducer matches root reducer', () => {
+    const action = {
+      type: 'TOGGLE_FORM'
+    }
+    store.dispatch(action);
+    expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, action));
+  });
+
 });
