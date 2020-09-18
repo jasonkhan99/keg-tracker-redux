@@ -4,6 +4,7 @@ import KegList from './KegList';
 import KegDetail from './KegDetail';
 import EditKegForm from './EditKegForm';
 import { connect } from 'react-redux';
+import * as a from './../actions';
 
 class KegControl extends React.Component {
 
@@ -18,15 +19,12 @@ class KegControl extends React.Component {
   handleClick = () => {
     if (this.state.selectedKeg != null) {
       this.setState({
-        formVisibleOnPage: false,
         selectedKeg: null,
         editing: false
       });
     } else {
       const { dispatch } = this.props;
-      const action = {
-        type: 'TOGGLE_FORM'
-      }
+      const action = a.toggleForm();
       dispatch(action);
     }
   }
@@ -74,14 +72,21 @@ class KegControl extends React.Component {
   }
 
   handleEditingKegInList = (kegToEdit) => {
-    const editedMasterKegList = this.state.masterKegList
-      .filter(keg => keg.id !== this.state.selectedKeg.id)
-      .concat(kegToEdit);
-    this.setState({
-        masterKegList: editedMasterKegList,
-        editing: false,
-        selectedKeg: null
-      });
+    const { dispatch } = this.props;
+    const { brand, name, price, alcoholContent, id } = kegToEdit;
+    const action = {
+      type: 'ADD_KEG',
+      brand: brand,
+      name: name,
+      price: price,
+      alcoholContent: alcoholContent,
+      id: id
+    }
+    dispatch(action);
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
   }
 
   handleDeletingKeg = (id) => {
