@@ -7,7 +7,7 @@ function KegList(props) {
   return (
     <React.Fragment>
       <hr/>
-      {Object.values(props.ticketList).map((ticket) =>
+      {Object.values(props.kegList).map((keg) =>
         <Keg
           whenKegClicked = { props.onKegSelection }
           brand={keg.brand}
