@@ -22,4 +22,18 @@ describe("rootReducer", () => {
     expect(store.getState().formVisibleOnPage).toEqual(formVisibleReducer(undefined, { type: null }));
   });
 
+  test('Check that initial state of kegListReducer matches root reducer', () => {
+    const action = {
+      type: 'ADD_KEG',
+      brand: 'Ninkasi',
+      name: 'Red Dawn',
+      price: '$6.00',
+      alcoholContent: '6.7',
+      pint: '124',
+      id: 1
+    }
+    store.dispatch(action);
+    expect(store.getState().masterKegList).toEqual(kegListReducer(undefined, action));
+  });
+
 });
