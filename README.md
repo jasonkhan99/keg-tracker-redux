@@ -6,6 +6,8 @@
 
 ## Description
 
+PART 1
+
 _This will be a two-week project. Spend today building a tap room in React where a bar or kombucha store can track their kegs._
 
 1.  As a user, I want to see a list/menu of all available kegs. For each keg, I want to see its name, brand, price and alcoholContent or perhaps something like flavor for a kombucha store.
@@ -13,6 +15,14 @@ _This will be a two-week project. Spend today building a tap room in React where
 3.  As a user, I want to be able to click on a keg to see its detail page.
 4.  As a user, I want to see how many pints are left in a keg. Hint: A full keg has roughly 124 pints.
 5.  As a user, I want to be able to click a button next to a keg whenever I sell a pint of it. This should decrease the number of pints left by 1. Pints should not be able to go below 0.
+
+PART 2
+
+_Update your application to incorporate Redux._
+
+1.  All state in your application should be handled by Redux (even if React can handle it locally).
+2.  All reducers should be tested thoroughly, and all tests must be passing.
+3.  Action creators and constants should be used.
 
 ## Component Diagram
 
