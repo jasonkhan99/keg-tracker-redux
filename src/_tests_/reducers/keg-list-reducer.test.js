@@ -2,6 +2,21 @@ import kegListReducer from '../../reducers/keg-list-reducer';
 
 describe('kegListReducer', () => {
 
+  const currentState = {
+    1: { brand: 'Ninkasi',
+    name: 'Red Dawn',
+    price: '$6.00',
+    alcoholContent: '6.7',
+    pint: '124',
+    id: 1 },
+    2: { brand: 'Pfriem',
+    name: 'Pilsner',
+    price: '$5.00',
+    alcoholContent: '4.5',
+    pint: '124',
+    id: 2 },
+  }
+
   let action;
   const kegData = {
     brand: 'Ninkasi',
@@ -37,4 +52,20 @@ describe('kegListReducer', () => {
       }
     });
   });
+
+  test('Should successfully delete a keg', () => {
+    action = {
+      type: 'DELETE_KEG',
+      id: 1
+    };
+    expect(kegListReducer(currentState, action)).toEqual({
+      2: { brand: 'Pfriem',
+        name: 'Pilsner',
+        price: '$5.00',
+        alcoholContent: '4.5',
+        pint: '124',
+        id: 2 },
+    });
+  });
+
 });
