@@ -41,9 +41,21 @@ class KegControl extends React.Component {
   }
 
   handleAddingNewKegToList = (newKeg) => {
-    const newMasterKegList = this.state.masterKegList.concat(newKeg);
-    this.setState({masterKegList: newMasterKegList,
-                  formVisibleOnPage: false });
+    const { dispatch } = this.props;
+    const { brand, name, price, alcoholContent, id } = newKeg;
+    const action = {
+      type: 'ADD_KEG',
+      brand: brand,
+      name: name,
+      price: price,
+      alcoholContent: alcoholContent,
+      id: id
+    }
+    dispatch(action);
+    const action2 = {
+      type: 'TOGGLE_FORM'
+    }
+    dispatch(action2);
   }
 
   handleSellingPint = (id) => {
@@ -98,7 +110,7 @@ class KegControl extends React.Component {
                                 onClickingEdit = {this.handleEditClick}
                               />
       buttonText = "Return to Keg List";
-    } else if (this.state.formVisibleOnPage) {
+    } else if (this.props.formVisibleOnPage) {
       currentlyVisibleState = <NewKegForm 
                                 onNewKegCreation={this.handleAddingNewKegToList} 
                               />;
